@@ -1,9 +1,8 @@
-test_that("GetFromTreeBase_solution",{
-	expect_is(GetFromTreeBase_solution(), "phylo")
+test_that("InferMorphologyTree_solution",{
+	results <- InferMorphologyTree_solution()
+	expect_is(results$parsimony.tree, "phylo")
+	expect_is(results$ml.tree, "phylo")
+	expect_true(is.null(results$parsimony.tree$edge.length))
+	expect_false(is.null(results$ml.tree$edge.length))
 })
 
-test_that("GetTreeFromOpenTree_solution",{
-	opentree.result <- GetTreeFromOpenTree_solution()
-	expect_is(opentree.result[[1]], "phylo")
-	expect_is(opentree.result[[2]], "phylo")
-})

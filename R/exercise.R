@@ -3,9 +3,6 @@
 #Things for you to change or fix are set off with ______UNDERSCORES______
 #Remember they might not have quotes in the correct answer (the seed, for example)
 
-setwd("/Users/Hailee/Documents/School/Graduate_School/Spring_2016/PhyloMeth/LikelihoodTrees/inst/extdata")
-
-library(ips)
 
 InferMorphologyTree_exercise <- function(in.place=FALSE, input.path=NULL, input.file = "binary.phy", output.path=NULL, output.name = "morpho1", random.seed=3, model="-m ASC_BINGAMMA", other='--asc-corr=lewis') {
 	if(!in.place) {
@@ -39,10 +36,8 @@ InferMorphologyTree_exercise <- function(in.place=FALSE, input.path=NULL, input.
 	return(list(parsimony.tree=parsimony.tree, ml.tree=ml.tree))
 }
 
-library(PhyloMethLikelihoodTrees)
 
-
-InferDNATreeWithBootstrappingAndPartitions_exerciseAndPartitions_exercise <- function (in.place=FALSE, input.path=NULL, input.file = "dna.phy", input.partition = "dna12_3.partition.txt", output.path=NULL, output.name = "dna1", random.seed=12345, boot.seed=12345, model="-m GTRGAMMA", boot=100) {
+InferDNATreeWithBootstrappingAndPartitions_exercise <- function (in.place=FALSE, input.path=NULL, input.file = "dna.phy", input.partition = "dna12_3.partition.txt", output.path=NULL, output.name = "dna1", random.seed=12345, boot.seed=12345, model="-m GTRGAMMA", boot=100) {
 	if(!in.place) {
 		if(is.null(input.path)) {
 			fpath <- system.file("extdata", input.file, package="PhyloMethLikelihoodTrees")
@@ -75,9 +70,3 @@ InferDNATreeWithBootstrappingAndPartitions_exerciseAndPartitions_exercise <- fun
 	return(list( ml.tree=ml.tree, ml.with.bs.tree=ml.with.bs.tree, bs.trees))
 }
 
-results <-InferDNATreeWithBootstrappingAndPartitions_exerciseAndPartitions_exercise(input.path("/Users/Hailee/Desktop/standard-RAxML"),output.path("/Users/Hailee/Documents/School/Graduate_School/Spring_2016/PhyloMeth/LikelihoodTrees"))
-
-library(ape)
-ploty.phylo(results$ml.with.bs.tree, show.node.label=TRUE)
-
-update.packages()
